@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antidrift: your agents are fast, not focused</title>
+  <meta name="description" content="A Mac app that runs your Claude Code sessions and won't let them wander. Every session has a goal. When one drifts, you hear about it. Local. No account. No cloud.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://antidrift.tech/">
+  <meta property="og:title" content="Your agents are fast. They are not focused.">
+  <meta property="og:description" content="Antidrift runs your Claude Code sessions and won't let them wander. Mac, local, early access.">
+  <meta property="og:image" content="https://antidrift.tech/og-icon.png">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><img src="logo.svg" alt="" width="30" height="30"> Antidrift</a>
+    <span class="top-meta mono">Mac · local · early access</span>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Your agents are fast.<br><mark>They are not focused.</mark></h1>
+      <p class="lede">
+        You opened one Claude session to fix a bug. Now there are sixteen, across three projects,
+        and one of them has spent the last hour rewriting a logging module nobody asked for.
+        <strong>Antidrift is the Mac app that won't let them wander.</strong>
+      </p>
+
+      <form class="waitlist inline-form" novalidate>
+        <input type="email" name="email" required autocomplete="email" placeholder="you@yourcompany.com" aria-label="Email">
+        <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">Let me in</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="fine mono">One email when it's ready. That's it.</p>
+
+      <!-- Product shot: a session tab with Antidrift's drift card over it. -->
+      <div class="window" aria-hidden="true">
+        <div class="win-bar">
+          <span class="lights"><i></i><i></i><i></i></span>
+          <span class="tab">Apple Pay at checkout</span>
+          <span class="tab tab-drift">Tax rounding on refunds</span>
+          <span class="tab tab-active"><i class="dot drift"></i>Dependabot cleanup</span>
+          <span class="tab">Offline cart</span>
+          <span class="tab more">+12</span>
+        </div>
+        <div class="win-body">
+          <pre class="term mono"><span class="t-dim">acme-shop/.claude/worktrees/dependabot</span>
+<span class="t-prompt">&gt;</span> close the dependabot PRs that are safe to merge
+
+<span class="t-claude">●</span> Looking at the open Dependabot PRs. While I was in
+  the code I noticed the logger is inconsistent, so I've
+  started refactoring <span class="t-hi">lib/logging/*.ts</span> into a shared…
+
+<span class="t-claude">●</span> Update(lib/logging/formatter.ts)
+<span class="t-dim">  ⎿  +142 −38</span>
+<span class="t-claude">●</span> Update(lib/logging/transports.ts)
+<span class="t-dim">  ⎿  +97 −61</span><span class="caret">▍</span></pre>
+
+          <div class="drift-card">
+            <p class="dc-flag"><i class="dot drift"></i> Drifted 47 min ago</p>
+            <p class="dc-row"><span>Goal</span> Close Dependabot PRs without risking prod</p>
+            <p class="dc-row dc-now"><span>Now on</span> Refactoring the logging module</p>
+            <div class="dc-actions">
+              <span class="b b-dark">Jump to session</span>
+              <span class="b">Make it a new goal</span>
+              <span class="b">It's fine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="beliefs">
+      <h2>Five things we believe</h2>
+      <ol>
+        <li>
+          <h3>One session, one goal.</h3>
+          <p>A session that can't say what it's for isn't working. It's wandering. Every session in Antidrift belongs to a goal, and the goal has a "done when".</p>
+        </li>
+        <li>
+          <h3>Agents don't get tired. You do.</h3>
+          <p>Babysitting sixteen tabs is not a job. Antidrift watches every session and puts only the few that need you on one board: drifted, waiting on you, or probably done.</p>
+        </li>
+        <li>
+          <h3>"Done" means done.</h3>
+          <p>"I've implemented the feature!" is a claim, not a result. Goals carry criteria, and nothing gets closed until they're checked.</p>
+        </li>
+        <li>
+          <h3>Your Mac. Your code. Your business.</h3>
+          <p>No account. No cloud. No telemetry. Antidrift keeps everything in a SQLite file on your disk and talks to nothing but your own Claude sessions.</p>
+        </li>
+        <li>
+          <h3>Quit the app, keep the work.</h3>
+          <p>Every session lives in its own tmux server. Quit Antidrift, update it, crash it: your agents keep going. Attach from any terminal you like.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Founder note + board -->
+    <section class="why">
+      <div class="note">
+        <p class="kicker mono">Why I built this</p>
+        <h2>Three projects.<br>Fourteen goals.<br>One head.</h2>
+        <p>
+          I run three projects across more than one repo, with around fourteen goals open at any time
+          and a Claude session or three on each.
+        </p>
+        <p>
+          Every morning I'd find a session that had gone off on a side quest, another that had been
+          waiting on me since lunch, and a goal I'd forgotten I'd started.
+          <strong>More agents made me faster. They didn't make me more focused.</strong>
+        </p>
+        <p>
+          So I built the tool I wanted. I use it every day. Now I want to know if you'd use it too.
+        </p>
+        <p class="sign"><span class="avatar">J</span> Jonathan</p>
+      </div>
+
+      <div class="board" aria-label="An example board: 2 repos, 3 projects, 14 goals">
+        <div class="board-head">
+          <span class="mono">My board, on a Tuesday <span class="muted">(names changed)</span></span>
+        </div>
+        <div class="projects">
+          <div class="project">
+            <p class="repo mono">acme-shop</p>
+            <h3>Checkout</h3>
+            <ul>
+              <li><i class="dot on"></i>Apple Pay at checkout <span class="n">3</span></li>
+              <li><i class="dot drift"></i>Tax rounding on refunds <span class="n">1</span></li>
+              <li><i class="dot wait"></i>Retry failed webhooks <span class="n">1</span></li>
+              <li><i class="dot idle"></i>Coupon stacking rules</li>
+              <li><i class="dot met"></i>Remove legacy cart API <span class="n">2</span></li>
+            </ul>
+          </div>
+          <div class="project">
+            <p class="repo mono">acme-shop</p>
+            <h3>Storefront</h3>
+            <ul>
+              <li><i class="dot on"></i>Faster product search <span class="n">2</span></li>
+              <li><i class="dot on"></i>Image CDN migration <span class="n">1</span></li>
+              <li><i class="dot met"></i>Holiday banner <span class="n">1</span></li>
+              <li><i class="dot idle"></i>Dark mode</li>
+            </ul>
+          </div>
+          <div class="project">
+            <p class="repo mono">acme-mobile</p>
+            <h3>iOS app</h3>
+            <ul>
+              <li><i class="dot wait"></i>Push notification opt-in <span class="n">1</span></li>
+              <li><i class="dot drift"></i>Offline cart <span class="n">2</span></li>
+              <li><i class="dot on"></i>Crash on iPad rotation <span class="n">1</span></li>
+              <li><i class="dot on"></i>Sign in with Apple <span class="n">1</span></li>
+              <li><i class="dot idle"></i>App Store screenshots</li>
+            </ul>
+          </div>
+        </div>
+        <p class="legend">
+          <span><i class="dot on"></i>On goal</span><span><i class="dot drift"></i>Drifting</span><span><i class="dot wait"></i>Waiting on you</span><span><i class="dot met"></i>Done?</span><span><i class="dot idle"></i>Idle</span>
+        </p>
+        <p class="board-foot">
+          <strong>14 goals, 16 sessions. Six need me.</strong> The other ten can get on with it.
+        </p>
+      </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section class="join" id="join">
+      <h2>Want in?</h2>
+      <p class="join-lede">A small group goes first. Three quick questions tell me who to let in, and what to build next.</p>
+
+      <form class="waitlist form" novalidate>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="you@yourcompany.com">
+        </label>
+
+        <fieldset class="field">
+          <legend>Which agents do you run? <em>pick any</em></legend>
+          <div class="chips">
+            <label><input type="checkbox" name="agents" value="claude-code"> Claude Code</label>
+            <label><input type="checkbox" name="agents" value="codex"> Codex</label>
+            <label><input type="checkbox" name="agents" value="cursor"> Cursor</label>
+            <label><input type="checkbox" name="agents" value="other"> Something else</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>How many at once, on a busy day?</legend>
+          <div class="chips">
+            <label><input type="radio" name="parallel" value="1"> Just one</label>
+            <label><input type="radio" name="parallel" value="2-3"> 2–3</label>
+            <label><input type="radio" name="parallel" value="4-9"> 4–9</label>
+            <label><input type="radio" name="parallel" value="10+"> 10+, send help</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Would you pay for it?</legend>
+          <div class="chips">
+            <label><input type="radio" name="pay" value="free-only"> Only if it's free</label>
+            <label><input type="radio" name="pay" value="once"> Yes, pay once and own it</label>
+            <label><input type="radio" name="pay" value="monthly"> Yes, monthly is fine</label>
+          </div>
+        </fieldset>
+
+        <input type="text" name="company_website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button type="submit">Let me in</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span class="brand"><img src="logo.svg" alt="" width="20" height="20"> Antidrift</span>
+    <span class="mono">Built on a Mac, by someone running too many agents.</span>
+  </footer>
+</body>
+</html>
