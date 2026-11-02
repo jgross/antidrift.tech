@@ -8,7 +8,8 @@ website/
   styles.css   tokens copied from src/renderer/styles/globals.css
   main.js      waitlist form (set ENDPOINT)
   logo.svg     the app icon (build/icon.svg), cropped to its tile
-  og-icon.png  link-preview image (build/icon.png)
+  og-icon.png  the app icon as a PNG (build/icon.png)
+  og.png       link-preview card, 1200×630, rendered from the hero
 ```
 
 Preview locally with `npx serve website` or `python3 -m http.server -d website`.
@@ -55,7 +56,8 @@ A signup count means nothing without the number of visits behind it.
   ```
 - **Note:** projects on the free plan pause after about a week without activity, and signups fail while paused.
 
-## Still to do before going live
+## Still to do
 
-1. **Hosting on GitHub Pages:** a workflow that publishes `website/`, a `CNAME` file containing `antidrift.tech`, and DNS records.
-2. **Analytics:** add the Cloudflare Web Analytics snippet so there are visits to divide by.
+1. **A real screen recording.** A 10-second loop of a drift card appearing in the app, to replace or sit next to the hero mock.
+2. **At public launch:** remove `<meta name="robots" content="noindex">` from `index.html`.
+3. **Link previews:** `og.png` (1200×630) is rendered from the hero. Re-render it when the hero changes.

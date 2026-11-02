@@ -13,8 +13,10 @@
   <meta property="og:url" content="https://antidrift.tech/">
   <meta property="og:title" content="Your agents are fast. They are not focused.">
   <meta property="og:description" content="Antidrift runs your Claude Code sessions and won't let them wander. Mac, local, invite-only.">
-  <meta property="og:image" content="https://antidrift.tech/og-icon.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://antidrift.tech/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,9 +35,9 @@
     <section class="hero">
       <h1>Your agents are fast.<br><mark>They are not focused.</mark></h1>
       <p class="lede">
-        You opened one Claude session to fix a bug. Now there are sixteen, across three projects,
+        You opened one Claude Code session to fix a bug. Now there are sixteen, across three projects,
         and one of them has spent the last hour rewriting a logging module nobody asked for.
-        <strong>Antidrift is the Mac app that won't let them wander.</strong>
+        <strong>Antidrift is the Mac app for Claude Code that won't let them wander.</strong>
       </p>
 
       <form class="waitlist inline-form" novalidate>
@@ -59,20 +61,20 @@
         <div class="win-body">
           <pre class="term mono"><span class="t-dim">acme-shop/.claude/worktrees/dependabot</span>
 <span class="t-prompt">&gt;</span> close the dependabot PRs that are safe to merge
+<span class="t-claude">●</span> Merged 4 of 6. Two bump major versions; left open.
 
-<span class="t-claude">●</span> Looking at the open Dependabot PRs. While I was in
-  the code I noticed the logger is inconsistent, so I've
-  started refactoring <span class="t-hi">lib/logging/*.ts</span> into a shared…
-
+<span class="t-prompt">&gt;</span> <span class="t-hi">while you're in there, the logger is a mess. clean it up</span>
 <span class="t-claude">●</span> Update(lib/logging/formatter.ts)
 <span class="t-dim">  ⎿  +142 −38</span>
+<span class="t-prompt">&gt;</span> <span class="t-hi">split the transports into their own files</span>
 <span class="t-claude">●</span> Update(lib/logging/transports.ts)
-<span class="t-dim">  ⎿  +97 −61</span><span class="caret">▍</span></pre>
+<span class="t-dim">  ⎿  +97 −61</span>
+<span class="t-prompt">&gt;</span> <span class="t-hi">refactor the logging module to use one shared formatter</span><span class="caret">▍</span></pre>
 
           <div class="drift-card">
             <p class="dc-flag"><i class="dot drift"></i> Drifted 47 min ago</p>
             <p class="dc-row"><span>Goal</span> Close Dependabot PRs without risking prod</p>
-            <p class="dc-row dc-now"><span>Now on</span> Refactoring the logging module</p>
+            <p class="dc-row dc-now"><span>Now on</span> “refactor the logging module to use one shared formatter”</p>
             <div class="dc-actions">
               <span class="b b-dark">Jump to session</span>
               <span class="b">Make it a new goal</span>
@@ -81,6 +83,7 @@
           </div>
         </div>
       </div>
+      <p class="shot-cap mono">One tab per goal. Three prompts in a row that have nothing to do with it, and you hear about it.</p>
     </section>
 
     <!-- Manifesto -->
@@ -97,17 +100,44 @@
         </li>
         <li>
           <h3>"Done" means done.</h3>
-          <p>"I've implemented the feature!" is a claim, not a result. Goals carry criteria, and nothing gets closed until they're checked.</p>
+          <p>"I've implemented the feature!" is a claim, not a result. Goals carry done-when criteria that you tick off, and when the last one is ticked the board asks you to close the goal.</p>
         </li>
         <li>
           <h3>Your Mac. Your code. Your business.</h3>
-          <p>No account. No cloud. No telemetry. Antidrift keeps everything in a SQLite file on your disk and talks to nothing but your own Claude sessions.</p>
+          <p>No account. No cloud. No telemetry. Antidrift keeps everything in a SQLite file on your disk. The one optional extra, a board assistant, calls Claude with your own API key and asks before it changes anything.</p>
         </li>
         <li>
           <h3>Quit the app, keep the work.</h3>
           <p>Every session lives in its own tmux server. Quit Antidrift, update it, crash it: your agents keep going. Attach from any terminal you like.</p>
         </li>
       </ol>
+    </section>
+
+    <!-- What a skeptical developer asks first -->
+    <section class="faq">
+      <h2>Fair questions</h2>
+      <dl>
+        <div>
+          <dt>How does it know a session drifted?</dt>
+          <dd>It compares the words in your prompts with the words in the session's goal and its done-when criteria. Three prompts in a row with nothing in common, and the session is drifting. It runs on your Mac: no LLM, no tokens, no cost per session. Click "It's fine" and those words join the goal.</dd>
+        </div>
+        <div>
+          <dt>Do I have to start my sessions inside it?</dt>
+          <dd>No. Antidrift adds hooks to Claude Code, so it sees every session, whether it started in Antidrift, in Terminal, iTerm or your editor, in any folder or worktree. Sessions you open in Antidrift also get a tab and survive the app quitting.</dd>
+        </div>
+        <div>
+          <dt>Who decides a goal is done?</dt>
+          <dd>You. Criteria are checkboxes. Antidrift won't pretend the tests passed; it puts the goal in front of you when every box is ticked.</dd>
+        </div>
+        <div>
+          <dt>What do I need?</dt>
+          <dd>A Mac, Claude Code, and python3 for the hooks (most dev Macs have it). tmux comes inside the app.</dd>
+        </div>
+        <div>
+          <dt>Codex? Cursor?</dt>
+          <dd>Claude Code only, for now. Codex is next on my list. Tick it in the form below: those answers decide the order.</dd>
+        </div>
+      </dl>
     </section>
 
     <!-- Founder note + board -->
