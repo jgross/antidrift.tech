@@ -178,7 +178,7 @@ input:focus-visible, button:focus-visible { outline: 3px solid #fff; outline-off
 .chips label:has(input:checked) { background: var(--ink); color: #fff; }
 .chips label:has(input:focus-visible) { outline: 3px solid var(--sun); outline-offset: 2px; }
 .form button { justify-self: start; }
-.form.done .field, .form.done button { display: none; }
+.form.done > .field, .form.done > button { display: none; }
 .form .form-status.err { color: var(--drift); }
 
 /* Footer */
@@ -200,5 +200,18 @@ input:focus-visible, button:focus-visible { outline: 3px solid #fff; outline-off
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
-.inline-form.done input, .inline-form.done button { display: none; }
+.inline-form.done > input, .inline-form.done > button { display: none; }
 .form-status a { color: inherit; }
+
+/* Invite link shown after signing up */
+.invite { flex-basis: 100%; display: grid; gap: 12px; margin-top: 8px; }
+.invite p { margin: 0; font-size: 1rem; }
+.invite-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.invite-row input {
+  flex: 1 1 240px; font: 600 1rem var(--mono); padding: 14px 16px;
+  border: 3px solid var(--ink); border-radius: 12px; background: #fff; color: var(--ink);
+}
+.invite-row button { padding: 14px 22px; font-size: 1rem; }
+.hero .invite { max-width: 560px; }
+.hero .invite p { color: var(--ink); }
+.form .invite { background: #fff4e6; border: 2px dashed var(--sun); border-radius: 14px; padding: 18px; }

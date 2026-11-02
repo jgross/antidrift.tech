@@ -44,6 +44,15 @@ A signup count means nothing without the number of visits behind it.
   select pay, count(*) from signups group by pay;
   select source, count(*) from signups group by source order by 2 desc;
   ```
+- **Referrals (word of mouth):** every signup gets a 5-character `ref_code` and sees their invite link (`antidrift.tech/?r=<code>`) after signing up. A visitor who arrives through a link is stored with `referred_by`. Only the first signup counts, and unknown codes are ignored. The site is `noindex`, so it spreads by people, not search. For hand-seeded links, use `?ref=<name>`, which lands in `source`.
+  ```sql
+  -- Who brings people in, and whether it spreads (signups per signup).
+  select r.email, count(*) as invited
+  from signups s join signups r on r.ref_code = s.referred_by
+  group by r.email order by invited desc;
+  select round(count(referred_by)::numeric / nullif(count(*) - count(referred_by), 0), 2) as invites_per_direct_signup
+  from signups;
+  ```
 - **Note:** projects on the free plan pause after about a week without activity, and signups fail while paused.
 
 ## Still to do before going live
